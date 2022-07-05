@@ -7,11 +7,10 @@ public class SumCol2dArray {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập số hàng: ");
         int row = scanner.nextInt();
-        System.out.println("Nhập số cột: ");
-        int col = scanner.nextInt();
-        double[][] array2d = new double[row][col];
+
+        double[][] array2d = new double[row][row];
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
+            for (int j = 0; j < row; j++) {
                 System.out.printf("Nhập matrix[%d][%d]: ", i, j);
                 array2d[i][j] = scanner.nextDouble();
             }
@@ -22,7 +21,7 @@ public class SumCol2dArray {
         do {
             System.out.println("Nhập cột cần tính tổng: ");
             index = scanner.nextInt();
-            isNotIndex = index < 0 || index > col - 1;
+            isNotIndex = index < 0 || index > row - 1;
             if (isNotIndex) {
                 System.out.println("Nhập lại cột cần tính tổng: ");
             }
