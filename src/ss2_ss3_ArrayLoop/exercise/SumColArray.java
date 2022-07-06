@@ -2,7 +2,7 @@ package ss2_ArrayLoop.exercise;
 
 import java.util.Scanner;
 
-public class SumCol2dArray {
+class SumCol2dArray {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập số hàng: ");
