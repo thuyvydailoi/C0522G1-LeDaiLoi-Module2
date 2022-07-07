@@ -1,7 +1,8 @@
 package ss4_Oop.practice;
 
 public class Rectangle {
-    double width, height;
+    double width;
+    double height;
 
     public Rectangle(double width, double height) {
         this.width = width;

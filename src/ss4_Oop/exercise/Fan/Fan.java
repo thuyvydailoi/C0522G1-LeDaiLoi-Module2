@@ -7,7 +7,7 @@ public class Fan {
     private int speed = SLOW;
     private boolean on = false;
     private double radius = 5;
-    private String color = "blue";
+    private String color = "Blue";
 
     public int getSLOW() {
         return SLOW;
