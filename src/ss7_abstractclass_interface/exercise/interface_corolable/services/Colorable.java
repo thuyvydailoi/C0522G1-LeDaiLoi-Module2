@@ -1,0 +1,5 @@
+package ss7_abstractclass_interface.exercise.interface_corolable.services;
+
+public interface Colorable {
+    void howtoColor();
+}
