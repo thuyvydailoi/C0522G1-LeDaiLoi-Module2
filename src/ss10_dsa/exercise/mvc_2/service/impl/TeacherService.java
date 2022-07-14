@@ -1,0 +1,67 @@
+package ss10_dsa.exercise.mvc_2.service.impl;
+
+import ss10_dsa.exercise.mvc_2.model.Teacher;
+import ss10_dsa.exercise.mvc_2.service.ITeacherService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class TeacherService implements ITeacherService {
+    public static List<Teacher> teacherList = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+
+    @Override
+    public void addTeacher() {
+        Teacher teacher = infoTeacher();
+        teacherList.add(teacher);
+        System.out.println("Thêm mới thành công!. ");
+    }
+
+    @Override
+    public void displayAllTeacher() {
+        for (Teacher teacher : teacherList) {
+            System.out.println(teacher);
+        }
+    }
+
+    @Override
+    public void removeTeacher() {
+        System.out.println("Mời bạn nhập id cần xoá: ");
+        int idRemove = Integer.parseInt(scanner.nextLine());
+        boolean isFlag = false;
+        for (Teacher teacher : teacherList) {
+            if (teacher.getId() == idRemove) {
+                System.out.println("Bạn có muốn xoá hay không? \n" +
+                        "1. Có \n" +
+                        "2. Không");
+                int chooseYesNo = Integer.parseInt(scanner.nextLine());
+                if (chooseYesNo == 1) {
+                    teacherList.remove(teacher);
+                    System.out.println("Xoá thành công!. ");
+                }
+                isFlag = true;
+                break;
+
+            }
+        }
+        if (!isFlag) {
+            System.out.println("Không tìm thấy");
+        }
+    }
+
+
+    public static Teacher infoTeacher() {
+        System.out.println("Nhập id: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        System.out.println("Nhập tên: ");
+        String name = scanner.nextLine();
+        System.out.println("Nhập ngày sinh: ");
+        String dateOfBirth = scanner.nextLine();
+        System.out.println("Giới tính: ");
+        String gender = (scanner.nextLine());
+        System.out.println("Chuyên môn: ");
+        String specialize = scanner.nextLine();
+        return new Teacher(id, name, dateOfBirth, gender, specialize);
+    }
+}
