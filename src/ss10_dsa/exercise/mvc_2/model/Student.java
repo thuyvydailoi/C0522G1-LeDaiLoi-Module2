@@ -7,7 +7,8 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return   "Id:" + getId() + ", Tên: " + getName() + ", Lớp: " + getNameClass() + ", Điếm: " + point +  ", Ngày sinh: " + getDateOfBirth() + ", Giới tính: " + getGender();
+        return "Id:" + getId() + ", Tên: " + getName() + ", Lớp: " + getNameClass() +
+                ", Điếm: " + point + ", Ngày sinh: " + getDateOfBirth() + ", Giới tính: " + getGender();
     }
 
     public int getPoint() {
@@ -26,8 +27,9 @@ public class Student extends Person {
         this.nameClass = nameClass;
     }
 
-    public Student(int id, String name, int point, String dateOfBirth, String nameClass, String gender) {
-        super(id,name,dateOfBirth,gender);
+    public Student(int id, String name, int point,
+                   String dateOfBirth, String nameClass, String gender) {
+        super(id, name, dateOfBirth, gender);
         this.point = point;
         this.nameClass = nameClass;
 
