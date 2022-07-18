@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TruckService implements ITruckService {
-    private static List<Truck> truckList = new ArrayList<>();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final List<Truck> truckList = new ArrayList<>();
+    private static final Scanner scanner = new Scanner(System.in);
 
     @Override
     public void addTruck() {
@@ -77,8 +77,8 @@ public class TruckService implements ITruckService {
         System.out.println("Mời bạn nhập người sở hữu: ");
         String owner = scanner.nextLine();
         System.out.println("Mời bạn nhập tải tronngj của xe: ");
-        String loadweight = scanner.nextLine();
-        Truck truck = new Truck(id, producer, year, owner, loadweight);
+        String loadWeight = scanner.nextLine();
+        Truck truck = new Truck(id, producer, year, owner, loadWeight);
         return truck;
     }
 }

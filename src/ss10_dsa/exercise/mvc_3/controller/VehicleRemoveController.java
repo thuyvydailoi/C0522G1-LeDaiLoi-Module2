@@ -27,7 +27,7 @@ public class VehicleRemoveController {
                 case 1:
                     car.removeCar();
                 case 2:
-                    moto.addMoto();
+                    moto.removeMoto();
                 case 3:
                     truck.removeTruck();
                 case 4:

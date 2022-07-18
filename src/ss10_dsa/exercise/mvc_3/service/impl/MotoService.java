@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MotoService implements IMotoService {
-    private static List<Moto> motoList = new ArrayList<Moto>();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final List<Moto> motoList = new ArrayList<>();
+    private static final Scanner scanner = new Scanner(System.in);
 
     @Override
     public void addMoto() {
@@ -76,7 +76,7 @@ public class MotoService implements IMotoService {
         int year = Integer.parseInt(scanner.nextLine());
         System.out.println("Mời bạn nhập người sở hữu: ");
         String owner = scanner.nextLine();
-        System.out.println("Mời bạn nhập tải trọng: ");
+        System.out.println("Mời bạn nhập công suất: ");
         String wattage = scanner.nextLine();
         Moto moto = new Moto(id, producer, year, owner, wattage);
         return moto;

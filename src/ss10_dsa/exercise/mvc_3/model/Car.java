@@ -13,7 +13,7 @@ public class Car extends Vehicle {
                 '}';
     }
 
-    public  Car() {
+    public Car() {
     }
 
     public Car(String id, String producer, int year, String owner, int numberOfSeats, String model) {

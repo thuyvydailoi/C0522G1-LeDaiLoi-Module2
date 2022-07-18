@@ -22,6 +22,7 @@ public class VehicleAddController {
                     "2. Thêm xe máy\n" +
                     "3. Thêm xe tải\n" +
                     "4. Quay lại menu chính ");
+
             System.out.println("Mời bạn chọn: ");
             int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
@@ -36,6 +37,6 @@ public class VehicleAddController {
                 case 4:
                     return;
             }
-        } while(true);
+        } while (true);
     }
 }

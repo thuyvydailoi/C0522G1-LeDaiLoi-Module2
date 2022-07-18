@@ -1,6 +1,6 @@
 package ss10_dsa.exercise.mvc_3.model;
 
-public class Vehicle {
+public abstract class Vehicle {
     private String id;
     private String producer;
     private int year;

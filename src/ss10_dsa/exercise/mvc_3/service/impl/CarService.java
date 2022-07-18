@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CarService implements ICarService {
-    private List<Car> carList = new ArrayList<>();
-    private static Scanner scanner = new Scanner(System.in);
+    private static final List<Car> carList = new ArrayList<>();
+    private static final Scanner scanner = new Scanner(System.in);
 
     @Override
     public void addCar() {
@@ -31,26 +31,26 @@ public class CarService implements ICarService {
         System.out.println("Mời bạn nhập biển kiểm soát cần tìm: ");
         String input = scanner.nextLine();
         boolean isFlag = false;
-        for (Car car : carList){
-            if(input.equals(car.getId())){
+        for (Car car : carList) {
+            if (input.equals(car.getId())) {
                 System.out.println(car);
                 isFlag = true;
                 break;
             }
         }
-        if(!isFlag){
+        if (!isFlag) {
             System.out.println("Không tìm thấy biển số xe");
         }
     }
 
     @Override
     public void removeCar() {
-        System.out.println("mời bạn nhập biển kiểm soát để xóa: ");
+        System.out.println("Mời bạn nhập biển kiểm soát để xóa: ");
         String input = scanner.nextLine();
         boolean isFlag = false;
         for (Car car : carList) {
             if (input.equals(car.getId())) {
-                System.out.println("Bạn chắc chắn muốn xoá không \n" +
+                System.out.println("Bạn chắc chắn muốn xoá không? \n" +
                         "1. Có \n" +
                         "2.Không");
                 int chooseYesNo = Integer.parseInt(scanner.nextLine());
@@ -62,7 +62,7 @@ public class CarService implements ICarService {
                 break;
             }
         }
-        if (!isFlag){
+        if (!isFlag) {
             System.out.println("Không tìm thấy biển số phù hợp!!!");
         }
     }
@@ -80,7 +80,7 @@ public class CarService implements ICarService {
         int numberOfSeats = Integer.parseInt(scanner.nextLine());
         System.out.println("Mời bạn nhập kiểu xe: ");
         String model = scanner.nextLine();
-        Car car =new Car(id, producer, year, owner, numberOfSeats, model);
+        Car car = new Car(id, producer, year, owner, numberOfSeats, model);
         return car;
 
     }
