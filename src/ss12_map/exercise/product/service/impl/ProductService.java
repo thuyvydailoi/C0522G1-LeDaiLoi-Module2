@@ -108,7 +108,6 @@ public class ProductService implements IProductService {
                     return;
             }
         } while (true);
-
     }
 
     private static Product infoProduct() {

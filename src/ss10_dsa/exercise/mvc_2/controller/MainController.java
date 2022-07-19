@@ -8,10 +8,10 @@ public class MainController {
         TeacherController teacherController = new TeacherController();
         Scanner scanner = new Scanner(System.in);
         do {
-            System.out.println("Chào mừng bạn đến với Codegym   . \n"+
-                    "1. Quản lý học sinh \n " +
-                    "2. Quản lý giảng viên \n " +
-                    "3. Thoát chương trình");
+            System.out.println("Chào mừng bạn đến với Codegym \n"+
+                    "1.Quản lý học sinh \n" +
+                    "2.Quản lý giảng viên \n" +
+                    "3.Thoát chương trình");
 
             System.out.println("Mời bạn nhập lựa chọn: ");
             int choose = Integer.parseInt(scanner.nextLine());

@@ -1,5 +1,6 @@
 package ss10_dsa.exercise.mvc_2.service.impl;
 
+import ss10_dsa.exercise.mvc_2.model.Student;
 import ss10_dsa.exercise.mvc_2.model.Teacher;
 import ss10_dsa.exercise.mvc_2.service.ITeacherService;
 
@@ -50,6 +51,39 @@ public class TeacherService implements ITeacherService {
         }
     }
 
+    @Override
+    public void searchId() {
+        System.out.println("Mời bạn nhập id học sinh ");
+        int input = Integer.parseInt(scanner.nextLine());
+        boolean isFlag = false;
+        for (Teacher teacher : teacherList) {
+            if (input == teacher.getId()) {
+                System.out.println(teacher);
+                isFlag = true;
+                break;
+            }
+        }
+        if (!isFlag) {
+            System.out.println("Không tìm thấy sinh viên cần tìm kiếm");
+        }
+    }
+
+    @Override
+    public void searchName() {
+        System.out.println("Mời bạn nhập tên sinh viên cần tìm kiếm: ");
+        String input = scanner.nextLine();
+        boolean isFlag = false;
+        for (Teacher teacher : teacherList){
+            if( input.equals(teacher.getName())){
+                System.out.println(teacher);
+                isFlag = true;
+                break;
+            }
+        }
+        if(!isFlag){
+            System.out.println("Không tìm thấy sinh viên cần tìm kiếm");
+        }
+    }
 
     public static Teacher infoTeacher() {
         System.out.println("Nhập id: ");

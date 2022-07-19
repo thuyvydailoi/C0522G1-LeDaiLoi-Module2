@@ -11,10 +11,12 @@ public class StudentController {
 
     public  void menuStudent() {
         do {
-            System.out.println("1. Thêm mới học sinh \n" +
-                    "2. Xoá học sinh \n" +
-                    "3. Xem danh sách học sinh \n" +
-                    "4. Quay về menu chính.");
+            System.out.println("1.Thêm mới học sinh \n" +
+                    "2.Xoá học sinh \n" +
+                    "3.Xem danh sách học sinh \n" +
+                    "4.Tìm kiếm sinh viên id \n" +
+                    "5.Tìm kiếm sinh viên theo tên \n" +
+                    "6.Quay về menu chính.");
             int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
@@ -27,6 +29,12 @@ public class StudentController {
                     iStudentService.displayAllStudent();
                     break;
                 case 4:
+                    iStudentService.searchId();
+                    break;
+                case 5:
+                    iStudentService.searchName();
+                    break;
+                case 6:
                     return;
             }
         } while (true);

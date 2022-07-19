@@ -37,27 +37,62 @@ public class StudentService implements IStudentService {
                         "1. Có \n" +
                         "2. Không");
                 int chooseYesNo = Integer.parseInt(scanner.nextLine());
-                if (chooseYesNo == 1){
+                if (chooseYesNo == 1) {
                     studentList.remove(student);
                     System.out.println("Xoá thành công!. ");
                 }
-                isFlag= true;
+                isFlag = true;
                 break;
 
             }
         }
-        if (!isFlag){
+        if (!isFlag) {
             System.out.println("Không tìm thấy");
         }
     }
 
-    public static Student infoStudent(){
+    @Override
+    public void searchId() {
+        System.out.println("Mời bạn nhập id học sinh ");
+        int input = Integer.parseInt(scanner.nextLine());
+        boolean isFlag = false;
+        for (Student student : studentList) {
+            if (input == student.getId()) {
+                System.out.println(student);
+                isFlag = true;
+                break;
+            }
+        }
+        if (!isFlag) {
+            System.out.println("Không tìm thấy sinh viên cần tìm kiếm");
+        }
+    }
+
+    @Override
+    public void searchName() {
+        System.out.println("Mời bạn nhập tên sinh viên cần tìm kiếm: ");
+        String input = scanner.nextLine();
+        boolean isFlag = false;
+        for (Student student : studentList){
+            if( input.equals(student.getName())){
+                System.out.println(student);
+                isFlag = true;
+                break;
+            }
+        }
+        if(!isFlag){
+            System.out.println("Không tìm thấy sinh viên cần tìm kiếm");
+        }
+
+    }
+
+    public static Student infoStudent() {
         return getStudent(scanner);
     }
 
     static Student getStudent(Scanner scanner) {
         System.out.println("Nhập id: ");
-        int id= Integer.parseInt(scanner.nextLine());
+        int id = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập tên: ");
         String name = scanner.nextLine();
         System.out.println("Nhập ngày sinh: ");
@@ -67,7 +102,7 @@ public class StudentService implements IStudentService {
         System.out.println("Nhập tên lớp: ");
         String nameClass = scanner.nextLine();
         System.out.println("Giới tính: ");
-        String gender=(scanner.nextLine());
+        String gender = (scanner.nextLine());
         return new Student(id, name, point, dateOfBirth, nameClass, gender);
     }
 }
