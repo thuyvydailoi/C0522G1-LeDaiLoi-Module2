@@ -4,6 +4,7 @@ import ss10_dsa.exercise.mvc_2.model.Student;
 import ss10_dsa.exercise.mvc_2.service.IStudentService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,6 +12,12 @@ public class StudentService implements IStudentService {
     private static List<Student> studentList = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
 
+    static {
+        studentList.add(new Student(1, "Le Dai Loi", 1000, "13/1/1997", "C05", "Nam"));
+        studentList.add(new Student(2, "Vo Van Ty", -10, "13/1/1997", "C05", "Nam"));
+        studentList.add(new Student(3, "Hoang Minh Tri", -100, "13/1/1997", "C05", "Nam"));
+        studentList.add(new Student(4, "Huynh Trung Thuyen", 999, "13/1/1997", "C05", "Nam"));
+    }
 
     @Override
     public void addStudent() {
@@ -73,17 +80,32 @@ public class StudentService implements IStudentService {
         System.out.println("Mời bạn nhập tên sinh viên cần tìm kiếm: ");
         String input = scanner.nextLine();
         boolean isFlag = false;
-        for (Student student : studentList){
-            if( input.equals(student.getName())){
+        for (Student student : studentList) {
+            if (input.equals(student.getName())) {
                 System.out.println(student);
                 isFlag = true;
                 break;
             }
         }
-        if(!isFlag){
+        if (!isFlag) {
             System.out.println("Không tìm thấy sinh viên cần tìm kiếm");
         }
 
+    }
+
+    @Override
+    public void sortStudent() {
+        boolean needNextPass = true;
+        for (int i = 0; i < studentList.size() && needNextPass; i++) {
+            needNextPass = false;
+            for (int j = 0; j < studentList.size() - 1 - i; j++) {
+                if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) > 0) {
+                    Collections.swap(studentList, j, j + 1);
+                    needNextPass = true;
+                }
+            }
+        }
+        displayAllStudent();
     }
 
     public static Student infoStudent() {

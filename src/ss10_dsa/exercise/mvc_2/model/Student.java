@@ -15,6 +15,9 @@ public class Student extends Person {
         return point;
     }
 
+    public Student() {
+    }
+
     public void setPoint(int point) {
         this.point = point;
     }

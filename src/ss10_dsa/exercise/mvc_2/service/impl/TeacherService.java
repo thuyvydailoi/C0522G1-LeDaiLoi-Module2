@@ -5,6 +5,7 @@ import ss10_dsa.exercise.mvc_2.model.Teacher;
 import ss10_dsa.exercise.mvc_2.service.ITeacherService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -83,6 +84,21 @@ public class TeacherService implements ITeacherService {
         if(!isFlag){
             System.out.println("Không tìm thấy sinh viên cần tìm kiếm");
         }
+    }
+
+    @Override
+    public void sortTeacher() {
+        boolean needNextPass = true;
+        for (int i = 0; i < teacherList.size() && needNextPass; i++) {
+            needNextPass = false;
+            for (int j = 0; j < teacherList.size() - 1 - i; j++) {
+                if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) > 0) {
+                    Collections.swap(teacherList, j, j + 1);
+                    needNextPass = true;
+                }
+            }
+        }
+        displayAllTeacher();
     }
 
     public static Teacher infoTeacher() {
