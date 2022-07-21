@@ -1,5 +1,6 @@
 package ss10_dsa.exercise.mvc_2.service.impl;
 
+import ss10_dsa.exercise.mvc_2.exception.DuplicateIDException;
 import ss10_dsa.exercise.mvc_2.model.Student;
 import ss10_dsa.exercise.mvc_2.service.IStudentService;
 
@@ -103,6 +104,11 @@ public class StudentService implements IStudentService {
                     Collections.swap(studentList, j, j + 1);
                     needNextPass = true;
                 }
+                if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) == 0) {
+                    if (studentList.get(j).getId() > studentList.get(j + 1).getId()) {
+                        Collections.swap(studentList, j, j + 1);
+                    }
+                }
             }
         }
         displayAllStudent();
@@ -113,8 +119,24 @@ public class StudentService implements IStudentService {
     }
 
     static Student getStudent(Scanner scanner) {
-        System.out.println("Nhập id: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        while (true){
+            try {
+                System.out.println("Nhập id: ");
+                id=Integer.parseInt(scanner.nextLine());
+
+                for (Student student: studentList){
+                    if (student.getId() == id){
+                        throw new DuplicateIDException("Id trùng, vui lòng nhập lại!!!");
+                    }
+                }
+                break;
+            } catch (NumberFormatException e){
+                System.out.println("Bạn đang nhập sai, vui lòng nhập số!!!");
+            } catch (DuplicateIDException e){
+                System.out.println(e.getMessage());
+            }
+        }
         System.out.println("Nhập tên: ");
         String name = scanner.nextLine();
         System.out.println("Nhập ngày sinh: ");

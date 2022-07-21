@@ -74,27 +74,33 @@ public class TeacherService implements ITeacherService {
         System.out.println("Mời bạn nhập tên sinh viên cần tìm kiếm: ");
         String input = scanner.nextLine();
         boolean isFlag = false;
-        for (Teacher teacher : teacherList){
-            if( input.equals(teacher.getName())){
+        for (Teacher teacher : teacherList) {
+            if (input.equals(teacher.getName())) {
                 System.out.println(teacher);
                 isFlag = true;
                 break;
             }
         }
-        if(!isFlag){
+        if (!isFlag) {
             System.out.println("Không tìm thấy sinh viên cần tìm kiếm");
         }
     }
 
     @Override
     public void sortTeacher() {
-        boolean needNextPass = true;
+        boolean needNextPass;
+        needNextPass = true;
         for (int i = 0; i < teacherList.size() && needNextPass; i++) {
             needNextPass = false;
             for (int j = 0; j < teacherList.size() - 1 - i; j++) {
                 if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) > 0) {
                     Collections.swap(teacherList, j, j + 1);
                     needNextPass = true;
+                }
+                if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) == 0) {
+                    if (teacherList.get(j).getId() > teacherList.get(j + 1).getId()) {
+                        Collections.swap(teacherList, j, j + 1);
+                    }
                 }
             }
         }
