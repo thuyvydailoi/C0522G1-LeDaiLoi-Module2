@@ -137,15 +137,25 @@ public class StudentService implements IStudentService {
                 System.out.println(e.getMessage());
             }
         }
-        System.out.println("Nhập tên: ");
-        String name = scanner.nextLine();
+
         System.out.println("Nhập ngày sinh: ");
         String dateOfBirth = scanner.nextLine();
-        System.out.println("Nhập điểm: ");
-        int point = Integer.parseInt(scanner.nextLine());
+
+        int point;
+        while (true){
+            try {
+                System.out.println("Nhập điểm của học sinh: ");
+                point = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e){
+                System.out.println("Bạn đang nhập sai, vui lòng nhập lại số!!!");
+            }
+        }
         System.out.println("Nhập tên lớp: ");
         String nameClass = scanner.nextLine();
         System.out.println("Giới tính: ");
+        System.out.println("Nhập tên: ");
+        String name = scanner.nextLine();
         String gender = (scanner.nextLine());
         return new Student(id, name, point, dateOfBirth, nameClass, gender);
     }
