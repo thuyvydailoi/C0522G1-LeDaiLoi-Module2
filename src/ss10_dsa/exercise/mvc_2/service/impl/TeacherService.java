@@ -3,6 +3,9 @@ package ss10_dsa.exercise.mvc_2.service.impl;
 import ss10_dsa.exercise.mvc_2.model.Student;
 import ss10_dsa.exercise.mvc_2.model.Teacher;
 import ss10_dsa.exercise.mvc_2.service.ITeacherService;
+import ss10_dsa.exercise.mvc_2.utils.ReadTeacherFile;
+import ss10_dsa.exercise.mvc_2.utils.WriteStudentFile;
+import ss10_dsa.exercise.mvc_2.utils.WriteTeacherFile;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,8 +17,14 @@ public class TeacherService implements ITeacherService {
     private static List<Teacher> teacherList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
+    public void writeFile(){
+        WriteTeacherFile.writeTeacherFile(PATH,teacherList);
+    }
+
     public void readFile(){
-        List<Teacher>list=
+        List<Teacher>list= ReadTeacherFile.readStudentFile(PATH);
+        teacherList.clear();
+        teacherList.addAll(list);
     }
     @Override
     public void addTeacher() {
