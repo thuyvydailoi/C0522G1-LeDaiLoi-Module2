@@ -3,6 +3,8 @@ package ss10_dsa.exercise.mvc_2.service.impl;
 import ss10_dsa.exercise.mvc_2.exception.DuplicateIDException;
 import ss10_dsa.exercise.mvc_2.model.Student;
 import ss10_dsa.exercise.mvc_2.service.IStudentService;
+import ss10_dsa.exercise.mvc_2.utils.ReadStudentFile;
+import ss10_dsa.exercise.mvc_2.utils.WriteStudentFile;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,25 +12,32 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StudentService implements IStudentService {
+    private  static final String PATH ="src/ss10_dsa/exercise/mvc_2/data/text.csv";
     private static List<Student> studentList = new ArrayList<>();
-    static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
-    static {
-        studentList.add(new Student(1, "Le Dai Loi", 1000, "13/1/1997", "C05", "Nam"));
-        studentList.add(new Student(2, "Vo Van Ty", -10, "13/1/1997", "C05", "Nam"));
-        studentList.add(new Student(3, "Hoang Minh Tri", -100, "13/1/1997", "C05", "Nam"));
-        studentList.add(new Student(4, "Huynh Trung Thuyen", 999, "13/1/1997", "C05", "Nam"));
+    public void writeFile(){
+        WriteStudentFile.writeStudentFile(PATH,studentList);
+    }
+
+    public void readFile(){
+        List<Student> list = ReadStudentFile.readStudentFile(PATH);
+        studentList.clear();
+        studentList.addAll(list);
     }
 
     @Override
     public void addStudent() {
+        readFile();
         Student student = infoStudent();
         studentList.add(student);
         System.out.println("Thêm mới thành công!. ");
+        writeFile();
     }
 
     @Override
     public void displayAllStudent() {
+        readFile();
         for (Student student : studentList) {
             System.out.println(student);
         }
@@ -36,6 +45,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public void removeStudent() {
+        readFile();
         System.out.println("Mời bạn nhập id cần xoá: ");
         int idRemove = Integer.parseInt(scanner.nextLine());
         boolean isFlag = false;
@@ -51,9 +61,10 @@ public class StudentService implements IStudentService {
                 }
                 isFlag = true;
                 break;
-
             }
         }
+        writeFile();
+
         if (!isFlag) {
             System.out.println("Không tìm thấy");
         }
@@ -61,6 +72,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public void searchId() {
+        readFile();
         System.out.println("Mời bạn nhập id học sinh ");
         int input = Integer.parseInt(scanner.nextLine());
         boolean isFlag = false;
@@ -78,6 +90,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public void searchName() {
+        readFile();
         System.out.println("Mời bạn nhập tên sinh viên cần tìm kiếm: ");
         String input = scanner.nextLine();
         boolean isFlag = false;
@@ -96,6 +109,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public void sortStudent() {
+        readFile();
         boolean needNextPass = true;
         for (int i = 0; i < studentList.size() && needNextPass; i++) {
             needNextPass = false;
@@ -110,6 +124,7 @@ public class StudentService implements IStudentService {
                     }
                 }
             }
+            writeFile();
         }
         displayAllStudent();
     }

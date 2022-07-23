@@ -10,9 +10,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TeacherService implements ITeacherService {
-    public static List<Teacher> teacherList = new ArrayList<>();
-    static Scanner scanner = new Scanner(System.in);
+    private static final String PATH ="src/ss10_dsa/exercise/mvc_2/data/text2.csv";
+    private static List<Teacher> teacherList = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
 
+    public void readFile(){
+        List<Teacher>list=
+    }
     @Override
     public void addTeacher() {
         Teacher teacher = infoTeacher();

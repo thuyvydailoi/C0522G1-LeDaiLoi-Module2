@@ -8,7 +8,7 @@ public class Student extends Person {
     @Override
     public String toString() {
         return "Id:" + getId() + ", Tên: " + getName() + ", Lớp: " + getNameClass() +
-                ", Điếm: " + point + ", Ngày sinh: " + getDateOfBirth() + ", Giới tính: " + getGender();
+                ", Điếm: " + getPoint() + ", Ngày sinh: " + getDateOfBirth() + ", Giới tính: " + getGender();
     }
 
     public int getPoint() {
@@ -16,6 +16,12 @@ public class Student extends Person {
     }
 
     public Student() {
+    }
+
+    @Override
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s\n", this.getId(),this.getName(),this.getDateOfBirth(),this.getGender(),this.getNameClass(),this.getPoint());
+
     }
 
     public void setPoint(int point) {
