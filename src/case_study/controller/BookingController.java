@@ -2,7 +2,7 @@ package case_study.controller;
 
 import java.util.Scanner;
 
-public class BookingComtroller {
+public class BookingController {
     private  final Scanner scanner = new Scanner(System.in);
 
     public void menuBooking(){

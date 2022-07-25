@@ -5,7 +5,7 @@ import ss12_map.exercise.product.service.impl.ProductService;
 
 import java.util.Scanner;
 
-public  class ProductController {
+public class ProductController {
     public static void menuController() {
         Scanner scanner = new Scanner(System.in);
         IProductService iProductService = new ProductService();
@@ -43,11 +43,9 @@ public  class ProductController {
                     break;
 
                 case 7:
-                    System.out.println("cảm ơn quý khách!");
+                    System.out.println("Cảm ơn quý khách!");
                     System.exit(1);
-
             }
-
         } while (true);
     }
 }

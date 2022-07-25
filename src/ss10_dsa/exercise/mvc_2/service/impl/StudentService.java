@@ -12,15 +12,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StudentService implements IStudentService {
-    private  static final String PATH ="src/ss10_dsa/exercise/mvc_2/data/text.csv";
+    private static final String PATH = "src/ss10_dsa/exercise/mvc_2/data/student.csv";
     private static List<Student> studentList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
-    public void writeFile(){
-        WriteStudentFile.writeStudentFile(PATH,studentList);
+    public void writeFile() {
+        WriteStudentFile.writeStudentFile(PATH, studentList);
     }
 
-    public void readFile(){
+    public void readFile() {
         List<Student> list = ReadStudentFile.readStudentFile(PATH);
         studentList.clear();
         studentList.addAll(list);
@@ -104,7 +104,6 @@ public class StudentService implements IStudentService {
         if (!isFlag) {
             System.out.println("Không tìm thấy sinh viên cần tìm kiếm");
         }
-
     }
 
     @Override
@@ -124,53 +123,52 @@ public class StudentService implements IStudentService {
                     }
                 }
             }
-            writeFile();
         }
         displayAllStudent();
+        writeFile();
     }
 
     public static Student infoStudent() {
-        return getStudent(scanner);
-    }
-
-    static Student getStudent(Scanner scanner) {
         int id;
-        while (true){
+        while (true) {
             try {
                 System.out.println("Nhập id: ");
-                id=Integer.parseInt(scanner.nextLine());
+                id = Integer.parseInt(scanner.nextLine());
 
-                for (Student student: studentList){
-                    if (student.getId() == id){
+                for (Student student : studentList) {
+                    if (student.getId() == id) {
                         throw new DuplicateIDException("Id trùng, vui lòng nhập lại!!!");
                     }
                 }
                 break;
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Bạn đang nhập sai, vui lòng nhập số!!!");
-            } catch (DuplicateIDException e){
+            } catch (DuplicateIDException e) {
                 System.out.println(e.getMessage());
+            }
+        }
+
+        System.out.println("Nhập tên: ");
+        String name = scanner.nextLine();
+
+        int point;
+        while (true) {
+            try {
+                System.out.println("Nhập điểm của học sinh: ");
+                point = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đang nhập sai, vui lòng nhập lại số!!!");
             }
         }
 
         System.out.println("Nhập ngày sinh: ");
         String dateOfBirth = scanner.nextLine();
 
-        int point;
-        while (true){
-            try {
-                System.out.println("Nhập điểm của học sinh: ");
-                point = Integer.parseInt(scanner.nextLine());
-                break;
-            } catch (NumberFormatException e){
-                System.out.println("Bạn đang nhập sai, vui lòng nhập lại số!!!");
-            }
-        }
         System.out.println("Nhập tên lớp: ");
         String nameClass = scanner.nextLine();
+
         System.out.println("Giới tính: ");
-        System.out.println("Nhập tên: ");
-        String name = scanner.nextLine();
         String gender = (scanner.nextLine());
         return new Student(id, name, point, dateOfBirth, nameClass, gender);
     }

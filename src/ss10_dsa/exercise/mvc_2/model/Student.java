@@ -20,7 +20,7 @@ public class Student extends Person {
 
     @Override
     public String getInfo() {
-        return String.format("%s,%s,%s,%s,%s\n", this.getId(),this.getName(),this.getDateOfBirth(),this.getGender(),this.getNameClass(),this.getPoint());
+        return String.format("%s,%s,%s,%s,%s,%s\n", this.getId(),this.getName(),this.getPoint(),this.getDateOfBirth(),this.getNameClass(),this.getGender());
 
     }
 

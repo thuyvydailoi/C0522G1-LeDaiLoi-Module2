@@ -36,9 +36,9 @@ public class ReadStudentFile {
         String[] info;
         for (String line : stringList) {
             info = line.split(",");
-            studentList.add(new Student(Integer.parseInt(info[0]), info[1], Integer.parseInt(info[2]), info[3], info[4], info[5]));
+            if (info.length == 6)
+                studentList.add(new Student(Integer.parseInt(info[0]), info[1], Integer.parseInt(info[2]), info[3], info[4], info[5]));
         }
-
         return studentList;
     }
 }

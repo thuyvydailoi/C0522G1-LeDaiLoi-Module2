@@ -1,10 +1,9 @@
 package ss10_dsa.exercise.mvc_2.service.impl;
 
-import ss10_dsa.exercise.mvc_2.model.Student;
+import ss10_dsa.exercise.mvc_2.exception.DuplicateIDException;
 import ss10_dsa.exercise.mvc_2.model.Teacher;
 import ss10_dsa.exercise.mvc_2.service.ITeacherService;
 import ss10_dsa.exercise.mvc_2.utils.ReadTeacherFile;
-import ss10_dsa.exercise.mvc_2.utils.WriteStudentFile;
 import ss10_dsa.exercise.mvc_2.utils.WriteTeacherFile;
 
 import java.util.ArrayList;
@@ -28,13 +27,16 @@ public class TeacherService implements ITeacherService {
     }
     @Override
     public void addTeacher() {
+        readFile();
         Teacher teacher = infoTeacher();
         teacherList.add(teacher);
         System.out.println("Thêm mới thành công!. ");
+        writeFile();
     }
 
     @Override
     public void displayAllTeacher() {
+        readFile();
         for (Teacher teacher : teacherList) {
             System.out.println(teacher);
         }
@@ -42,6 +44,7 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void removeTeacher() {
+        readFile();
         System.out.println("Mời bạn nhập id cần xoá: ");
         int idRemove = Integer.parseInt(scanner.nextLine());
         boolean isFlag = false;
@@ -60,6 +63,8 @@ public class TeacherService implements ITeacherService {
 
             }
         }
+        writeFile();
+
         if (!isFlag) {
             System.out.println("Không tìm thấy");
         }
@@ -67,6 +72,7 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void searchId() {
+        readFile();
         System.out.println("Mời bạn nhập id học sinh ");
         int input = Integer.parseInt(scanner.nextLine());
         boolean isFlag = false;
@@ -84,6 +90,7 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void searchName() {
+        readFile();
         System.out.println("Mời bạn nhập tên sinh viên cần tìm kiếm: ");
         String input = scanner.nextLine();
         boolean isFlag = false;
@@ -101,6 +108,7 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void sortTeacher() {
+        readFile();
         boolean needNextPass;
         needNextPass = true;
         for (int i = 0; i < teacherList.size() && needNextPass; i++) {
@@ -118,19 +126,41 @@ public class TeacherService implements ITeacherService {
             }
         }
         displayAllTeacher();
+        writeFile();
     }
 
     public static Teacher infoTeacher() {
-        System.out.println("Nhập id: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id;
+        while(true){
+            try{
+                System.out.println("Nhập id: ");
+                 id = Integer.parseInt(scanner.nextLine());
+
+                 for (Teacher teacher : teacherList){
+                     if (teacher.getId() == id){
+                         throw new DuplicateIDException("Id trùng, vui lòng nhập lại!!!");
+                     }
+                 }
+                 break;
+            }catch (NumberFormatException e){
+                System.out.println("Bạn đang nhập sai, vui lòng nhập số!!!");
+            } catch (DuplicateIDException e ){
+                System.out.println(e.getMessage());
+            }
+        }
+
         System.out.println("Nhập tên: ");
         String name = scanner.nextLine();
+
         System.out.println("Nhập ngày sinh: ");
         String dateOfBirth = scanner.nextLine();
+
         System.out.println("Giới tính: ");
         String gender = (scanner.nextLine());
+
         System.out.println("Chuyên môn: ");
         String specialize = scanner.nextLine();
+
         return new Teacher(id, name, dateOfBirth, gender, specialize);
     }
 }
