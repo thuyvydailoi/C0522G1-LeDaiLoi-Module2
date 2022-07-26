@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class EmployeeController {
     private final Scanner scanner = new Scanner(System.in);
-    IEmployeeService employee = new EmployeeService();
+    IEmployeeService employeeService = new EmployeeService();
 
     public void menuEmployee(){
         do {
@@ -17,17 +17,24 @@ public class EmployeeController {
                     "3.Sửa thông tin nhân viên \n" +
                     "4.Quay trở lại menu chính \n");
 
-            System.out.println("Mời bạn chọn: ");
-            int choose = Integer.parseInt(scanner.nextLine());
+            int choose = 0;
+
+            try {
+                System.out.print("Mời bạn nhập lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            }
+
             switch (choose){
                 case 1:
-                    employee.add();
+                    employeeService.add();
                     break;
                 case 2:
-                    employee.display();
+                    employeeService.display();
                     break;
                 case 3:
-                    employee.edit();
+                    employeeService.edit();
                 case 4:
                     return;
             }

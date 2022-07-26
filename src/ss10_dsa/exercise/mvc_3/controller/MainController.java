@@ -19,8 +19,14 @@ public class MainController {
                     "4.Tìm kiếm theo biển kiểm soát \n" +
                     "5.Thoát ");
 
-            System.out.println("Mời bạn nhập lựa chọn: ");
-            int choose = Integer.parseInt(scanner.nextLine());
+            int choose = 0;
+
+            try {
+                System.out.print("Mời bạn nhập lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            }
 
             switch (choose) {
                 case 1:

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class CustomerController {
     private final Scanner scanner = new Scanner(System.in);
-    ICustomerService customer = new CustomerService();
+    ICustomerService customerService = new CustomerService();
     public void menuCustomer(){
         do {
 
@@ -17,17 +17,24 @@ public class CustomerController {
                     "3.Thay đổi thông tin khách hàng \n" +
                     "4.Quay trở lại menu chính");
 
-            System.out.println("Mời bạnh chọn: ");
-            int choose = Integer.parseInt(scanner.nextLine());
+            int choose = 0;
+
+            try {
+                System.out.print("Mời bạn nhập lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            }
+
             switch (choose){
                 case 1:
-                    customer.add();
+                    customerService.add();
                     break;
                 case 2:
-                    customer.display();
+                    customerService.display();
                     break;
                 case 3:
-                    customer.edit();
+                    customerService.edit();
                     break;
                 case 4:
                     return;

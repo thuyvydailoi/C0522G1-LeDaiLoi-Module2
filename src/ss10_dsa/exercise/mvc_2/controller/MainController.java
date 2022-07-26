@@ -12,9 +12,15 @@ public class MainController {
                     "1.Quản lý học sinh \n" +
                     "2.Quản lý giảng viên \n" +
                     "3.Thoát chương trình");
+            int choose = 0;
 
-            System.out.println("Mời bạn nhập lựa chọn: ");
-            int choose = Integer.parseInt(scanner.nextLine());
+            try {
+                System.out.print("Mời bạn nhập lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            }
+
 
             switch (choose) {
                 case 1:

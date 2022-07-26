@@ -23,8 +23,15 @@ public class FacilityController {
                     "3.Hiển thị danh sách cơ sở cần bảo trì \n" +
                     "4.Quay lại menu chính");
 
-            System.out.println("Mời bạn chọn: ");
-            int choose = Integer.parseInt(scanner.nextLine());
+            int choose = 0;
+
+            try {
+                System.out.print("Mời bạn nhập lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            }
+
             switch (choose) {
                 case 1:
                     do {
@@ -32,8 +39,15 @@ public class FacilityController {
                                 "1.Hiển thị danh sách villa \n" +
                                 "2.Hiển thị danh sách house \n" +
                                 "3.Hiển thị danh sách room ");
-                        System.out.println("Mời bạn chọn: ");
-                        int choose2 = Integer.parseInt(scanner.nextLine());
+
+                        int choose2 = 0;
+                        try {
+                            System.out.print("Mời bạn nhập lựa chọn: ");
+                            choose2 = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Vui lòng nhập số!");
+                        }
+
                         switch (choose2) {
                             case 1:
                                 villa.display();
@@ -56,9 +70,17 @@ public class FacilityController {
                                 "1.Thêm villa \n" +
                                 "2.Thêm house \n" +
                                 "3.Thêm room ");
-                        System.out.println("Mời bạn chọn: ");
-                        int choose2 = Integer.parseInt(scanner.nextLine());
-                        switch (choose2) {
+
+                        int choose3 = 0;
+
+                        try {
+                            System.out.print("Mời bạn nhập lựa chọn: ");
+                            choose3 = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Vui lòng nhập số!");
+                        }
+
+                        switch (choose3) {
                             case 1:
                                 villa.add();
                                 break;
@@ -79,9 +101,17 @@ public class FacilityController {
                                 "1.Hiển thị danh sách villa cần sửa chữa \n" +
                                 "2.Hiển thị danh sách house cần sửa chữa \n" +
                                 "3.Hiển thị danh sách room cần sửa chữa ");
-                        System.out.println("Mời bạn chọn: ");
-                        int choose2 = Integer.parseInt(scanner.nextLine());
-                        switch (choose2) {
+
+                        int choose4 = 0;
+
+                        try {
+                            System.out.print("Mời bạn nhập lựa chọn: ");
+                            choose4 = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Vui lòng nhập số!");
+                        }
+
+                        switch (choose4) {
                             case 1:
                                 villa.displayMaintenance();
                                 break;

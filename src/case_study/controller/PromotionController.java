@@ -12,8 +12,15 @@ public class PromotionController {
                     "2.Hiển thị danh sách khách hàng có sử dụng ưu đãi \n" +
                     "3.Quay lại menu chính ");
 
-            System.out.println("Mời bạn chọn: ");
-            int choose = Integer.parseInt(scanner.nextLine());
+            int choose = 0;
+
+            try {
+                System.out.print("Mời bạn nhập lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            }
+
             switch (choose){
                 case 1:
                 case 2:

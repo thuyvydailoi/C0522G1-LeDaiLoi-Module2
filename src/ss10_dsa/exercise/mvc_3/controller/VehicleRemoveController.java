@@ -22,7 +22,16 @@ public class VehicleRemoveController {
                     "2. Xoá xe máy \n" +
                     "3. Xoá xe tải \n" +
                     "4. Quay lại menu chính");
-            int choose = Integer.parseInt(scanner.nextLine());
+
+            int choose = 0;
+
+            try {
+                System.out.print("Mời bạn nhập lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            }
+
             switch (choose) {
                 case 1:
                     car.removeCar();

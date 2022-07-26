@@ -22,7 +22,16 @@ public class VehicleSearchController {
                     "2.Tìm kiếm xe máy \n" +
                     "3. Tìm kiếm xe tải \n" +
                     "4. Quay lại menu chính ");
-            int choose = Integer.parseInt(scanner.nextLine());
+
+            int choose = 0;
+
+            try {
+                System.out.print("Mời bạn nhập lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            }
+
             switch (choose){
                 case 1:
                     car.searchCar();
