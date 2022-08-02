@@ -7,7 +7,17 @@ public class Customer extends Person {
     public Customer() {
     }
 
-    public Customer(int code, String name, String dateOfBirth, String gender, int id, int phoneNumber, String email, String typeOfGuest, String address) {
+    @Override
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s\n",
+                this.getCode(), this.getName(), this.getDateOfBirth(), this.getGender(),
+                this.getId(), this.getPhoneNumber(), this.getEmail(), this.getTypeOfGuest(),
+                this.getAddress());
+    }
+
+    public Customer(String code, String name, String dateOfBirth,
+                    String gender, String id, String phoneNumber,
+                    String email, String typeOfGuest, String address) {
         super(code, name, dateOfBirth, gender, id, phoneNumber, email);
         this.typeOfGuest = typeOfGuest;
         this.address = address;
@@ -31,10 +41,8 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "typeOfGuest='" + typeOfGuest + '\'' +
-                ", address='" + address + '\'' +
-                super.toString() +
-                '}';
+        return super.toString() +
+                ", typeOfGuest: " + typeOfGuest +
+                ", address: " + address;
     }
 }

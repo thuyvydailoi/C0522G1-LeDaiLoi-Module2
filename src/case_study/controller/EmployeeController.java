@@ -35,6 +35,7 @@ public class EmployeeController {
                     break;
                 case 3:
                     employeeService.edit();
+                    break;
                 case 4:
                     return;
             }

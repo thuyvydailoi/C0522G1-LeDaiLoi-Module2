@@ -8,7 +8,17 @@ public class Employee extends Person {
     public Employee() {
     }
 
-    public Employee(int code, String name, String dateOfBirth, String gender, int id, int phoneNumber, String email, String level, String position, double wage) {
+    @Override
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n",
+                this.getCode(), this.getName(), this.getDateOfBirth(),
+                this.getGender(), this.getId(), this.getPhoneNumber(),
+                this.getEmail(), this.getLevel(), this.getPosition(), this.getWage());
+    }
+
+    public Employee(String code, String name, String dateOfBirth,
+                    String gender, String id, String phoneNumber, String email,
+                    String level, String position, double wage) {
         super(code, name, dateOfBirth, gender, id, phoneNumber, email);
         this.level = level;
         this.position = position;
@@ -35,17 +45,16 @@ public class Employee extends Person {
         return wage;
     }
 
-    public void setWage(int wage) {
+    public void setWage(double wage) {
         this.wage = wage;
     }
 
+
     @Override
     public String toString() {
-        return "Employee{" +
-                "level='" + level + '\'' +
-                ", position='" + position + '\'' +
-                ", wage='" + wage + '\'' +
-                super.toString() +
-                '}';
+        return super.toString() +
+                ", level: " + level +
+                ", position: " + position +
+                ", wage: " + wage;
     }
 }

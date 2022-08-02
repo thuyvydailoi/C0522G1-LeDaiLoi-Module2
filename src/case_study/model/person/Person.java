@@ -1,18 +1,18 @@
 package case_study.model.person;
 
 public abstract class Person {
-    private int code;
+    private String code;
     private String name;
     private String dateOfBirth;
     private String gender;
-    private int id;
-    private int phoneNumber;
+    private String id;
+    private String phoneNumber;
     private String email;
 
     public Person() {
     }
 
-    public Person(int code, String name, String dateOfBirth, String gender, int id, int phoneNumber, String email) {
+    public Person(String code, String name, String dateOfBirth, String gender, String id, String phoneNumber, String email) {
         this.code = code;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -22,11 +22,11 @@ public abstract class Person {
         this.email = email;
     }
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -54,19 +54,19 @@ public abstract class Person {
         this.gender = gender;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -78,16 +78,18 @@ public abstract class Person {
         this.email = email;
     }
 
+    public abstract String getInfo();
+
     @Override
     public String toString() {
-        return "Person{" +
-                "code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", gender='" + gender + '\'' +
-                ", id='" + id + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
+        return
+                "code: " + code +
+                ", name: " + name +
+                ", dateOfBirth: " + dateOfBirth +
+                ", gender: " + gender +
+                ", id: " + id +
+                ", phoneNumber: " + phoneNumber +
+                ", email: " + email;
+
     }
 }

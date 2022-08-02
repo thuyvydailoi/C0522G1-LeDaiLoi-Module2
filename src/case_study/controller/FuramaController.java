@@ -3,7 +3,7 @@ package case_study.controller;
 import java.util.Scanner;
 
 public class FuramaController {
-    public static void main(String[] args) {
+    public static void menuController() {
         Scanner scanner = new Scanner(System.in);
         EmployeeController employeeController = new EmployeeController();
         CustomerController customerController = new CustomerController();
@@ -24,7 +24,7 @@ public class FuramaController {
             int choose = 0;
 
             try {
-                System.out.print("Mời bạn nhập lựa chọn: ");
+                System.out.println("Mời bạn nhập lựa chọn: ");
                 choose = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số!");
@@ -45,6 +45,7 @@ public class FuramaController {
                     break;
                 case 5:
                     promotionController.menuPromotion();
+                    break;
                 case 6:
                     System.exit(1);
             }

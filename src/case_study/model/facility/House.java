@@ -1,24 +1,34 @@
 package case_study.model.facility;
 
 public class House extends Facility {
-    private String standard;
+    private String standardHouse;
     private int numberOfFloors;
 
     public House() {
     }
 
-    public House(String nameService, int area, int price, int numberPeople, int rentalType, String standard, int numberOfFloors) {
-        super(nameService, area, price, numberPeople, rentalType);
-        this.standard = standard;
+    @Override
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s",
+                this.getIdService(), this.getNameService(),
+                this.getArea(), this.getPrice(), this.getNumberOfPeople(),
+                this.getRentalType(), this.getStandardHouse(), this.getNumberOfFloors());
+    }
+
+    public House(String nameService, String idService,
+                 double area, int price, int numberPeople,
+                 String rentalType, String standardHouse, int numberOfFloors) {
+        super(nameService, idService, area, price, numberPeople, rentalType);
+        this.standardHouse = standardHouse;
         this.numberOfFloors = numberOfFloors;
     }
 
-    public String getStandard() {
-        return standard;
+    public String getStandardHouse() {
+        return standardHouse;
     }
 
     public void setStandard(String standard) {
-        this.standard = standard;
+        this.standardHouse = standardHouse;
     }
 
     public int getNumberOfFloors() {
@@ -31,10 +41,8 @@ public class House extends Facility {
 
     @Override
     public String toString() {
-        return "House{" +
-                "standard='" + standard + '\'' +
-                ", numberOfFloors=" + numberOfFloors +
-                super.toString() +
-                '}';
+        return super.toString() +
+                ", standard: " + standardHouse +
+                ", numberOfFloors: " + numberOfFloors;
     }
 }

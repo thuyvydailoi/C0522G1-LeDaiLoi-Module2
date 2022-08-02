@@ -1,6 +1,6 @@
 package case_study.service;
 
-public interface IFacilityService<E> {
+public interface IFacilityService {
     void display();
 
     void add();
