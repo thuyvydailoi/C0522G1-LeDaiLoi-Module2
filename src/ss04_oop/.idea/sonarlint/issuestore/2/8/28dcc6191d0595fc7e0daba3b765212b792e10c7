@@ -1,0 +1,9 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ú»š¥ýÿÿÿÿ
+–
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(øþ±,
+y
+java:S1450"WRemove the "password" field and declare it as a local variable in the relevant methods.(–Á»¿úÿÿÿÿ8ÂÝ‘þÎ0
+]	java:S125"<This block of commented-out lines of code should be removed.(ÿ•­Öúÿÿÿÿ8ÄÝ‘þÎ0
+N
+java:S1068",Remove this unused "password" private field.(–Á»¿úÿÿÿÿ8ÄÝ‘þÎ0

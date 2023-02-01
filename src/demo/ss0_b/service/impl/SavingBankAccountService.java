@@ -1,7 +1,7 @@
 package demo.ss0_b.service.impl;
 
 import demo.ss0_b.exception.NotFoundBankAccountException;
-import demo.ss0_b.exception.NumberInException;
+import demo.ss0_b.exception.NumberInvalidException;
 import demo.ss0_b.model.BankAccount;
 import demo.ss0_b.model.SavingBankAccount;
 import demo.ss0_b.service.ISavingBankAccountService;
@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class SavingBankAccountService implements ISavingBankAccountService {
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final String PATH = "src/case_study_bank/data/savingaccount.csv";
+    private static final String PATH = "src/demo/ss0_b/data/savingaccount.csv";
 
     @Override
     public void add() {
@@ -27,7 +27,6 @@ public class SavingBankAccountService implements ISavingBankAccountService {
             id = bankAccountList.get(bankAccountList.size() - 1).getId() + 1;
         }
 
-
         System.out.println("Nhập mã tài khoản: ");
         String code = SCANNER.nextLine();
 
@@ -37,30 +36,56 @@ public class SavingBankAccountService implements ISavingBankAccountService {
         System.out.println("Nhập ngày tạo tài khoản: ");
         String dateCreated = SCANNER.nextLine();
 
+        System.out.print("Nhập số tiền gửi tiết kiệm (VNĐ): ");
         int saveMoney;
-        while (true) {
+        do {
             try {
-                System.out.println("Nhập số tiền trong tài khoản (VNĐ): ");
                 saveMoney = Integer.parseInt(SCANNER.nextLine());
                 if (saveMoney <= 0) {
-                    throw new NumberInException("số tiền phải lớn hơn 0");
+                    throw new NumberInvalidException("Vui lòng nhập số dương!");
                 }
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("vui lòng nhập số");
-            } catch (NumberInException e) {
+                System.out.println("Vui lòng nhập số!");
+            } catch (NumberInvalidException e) {
                 System.out.println(e.getMessage());
             }
-        }
+        } while (true);
 
-        System.out.println("Nhập số ngày gửi tiết kiệm : ");
+        System.out.println("Nhập ngày gửi tiết kiệm : ");
         String dateSave = SCANNER.nextLine();
 
-        System.out.println("Nhập lãi suất tiết kiệm: ");
-        double interestRate = Double.parseDouble(SCANNER.nextLine());
+        System.out.println("Nhập lãi suất (%): ");
+        double interestRate;
+        do {
+            try {
+                interestRate = Double.parseDouble(SCANNER.nextLine());
+                if (interestRate <= 0) {
+                    throw new NumberInvalidException("Vui lòng nhập số dương!");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            } catch (NumberInvalidException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (true);
 
-        System.out.println("Nhập kỳ hạn gửi: ");
-        int preiod = Integer.parseInt(SCANNER.nextLine());
+        System.out.println("Nhập kì hạn (tháng): ");
+        int preiod;
+        do {
+            try {
+                preiod = Integer.parseInt(SCANNER.nextLine());
+                if (preiod <= 0) {
+                    throw new NumberInvalidException("Vui lòng nhập số dương!");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            } catch (NumberInvalidException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (true);
 
         bankAccountList.add(new SavingBankAccount(id, code, name, dateCreated, saveMoney, dateSave, interestRate, preiod));
         ReadWriteBankFileUtil.writeBankAccountFile(PATH, bankAccountList);

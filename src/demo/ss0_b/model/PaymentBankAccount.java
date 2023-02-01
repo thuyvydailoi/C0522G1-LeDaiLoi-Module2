@@ -9,8 +9,8 @@ public class PaymentBankAccount extends BankAccount {
 
     @Override
     public String getInfo() {
-        return String.format("%s,%s,%s,%s,%s,%s",this.getId(), this.getName(),
-                this.getCode(), this.getDateCreated(),
+        return String.format("%s,%s,%s,%s,%s,%s\n",this.getId(),
+                this.getCode(),this.getName(), this.getDateCreated(),
                 this.getNumberCard(), this.getMoneyInCard());
     }
 

@@ -1,7 +1,7 @@
 package demo.ss0_b.service.impl;
 
 import demo.ss0_b.exception.NotFoundBankAccountException;
-import demo.ss0_b.exception.NumberInException;
+import demo.ss0_b.exception.NumberInvalidException;
 import demo.ss0_b.model.BankAccount;
 import demo.ss0_b.model.PaymentBankAccount;
 import demo.ss0_b.service.IPaymentAccountService;
@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class PaymentAccountService implements IPaymentAccountService {
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final String PATH = "src/case_study_bank/data/bank_accounts.csv";
+    private static final String PATH = "src/demo/ss0_b/data/bank_accounts.csv";
 
     @Override
     public void add() {
@@ -26,7 +26,6 @@ public class PaymentAccountService implements IPaymentAccountService {
         }
 
 //        int id = bankAccountList.get(bankAccountList.size() - 1).getId() + 1;
-//
 
         System.out.println("Nhập mã tài khoản: ");
         String code = SCANNER.nextLine();
@@ -38,22 +37,36 @@ public class PaymentAccountService implements IPaymentAccountService {
         String dateCreated = SCANNER.nextLine();
 
         System.out.println("Nhập số tài khoản: ");
-        int numberCard = Integer.parseInt(SCANNER.nextLine());
-        int money;
-        while (true) {
+        int numberCard;
+        do {
             try {
-                System.out.println("Nhập số tiền trong tài khoản (VNĐ): ");
-                money = Integer.parseInt(SCANNER.nextLine());
-                if (money <= 0) {
-                    throw new NumberInException("số tiền phải lớn hơn 0");
+                numberCard = Integer.parseInt(SCANNER.nextLine());
+                if (numberCard <= 0) {
+                    throw new NumberInvalidException("Vui lòng nhập số dương!");
                 }
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("vui lòng nhập số");
-            } catch (NumberInException e) {
+                System.out.println("Vui lòng nhập số!");
+            } catch (NumberInvalidException e) {
                 System.out.println(e.getMessage());
             }
-        }
+        } while (true);
+
+        System.out.println("Nhập số tiền trong tài khoản (VNĐ): ");
+        int money;
+        do {
+            try {
+                money = Integer.parseInt(SCANNER.nextLine());
+                if (money <= 0) {
+                    throw new NumberInvalidException("Vui lòng nhập số dương!");
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số!");
+            } catch (NumberInvalidException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (true);
 
 
         bankAccountList.add(new PaymentBankAccount(id, code, name, dateCreated, numberCard, money));

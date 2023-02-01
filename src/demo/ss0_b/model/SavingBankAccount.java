@@ -8,8 +8,8 @@ public class SavingBankAccount extends BankAccount {
 
     @Override
     public String getInfo() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s,%s", this.getId(), this.getName(),
-                this.getCode(), this.getDateCreated(), this.getSaveMoney(),
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s\n", this.getId(),
+                this.getCode(), this.getName(), this.getDateCreated(), this.getSaveMoney(),
                 this.getDateSave(), this.getInterestRate(), this.getPeriod());
     }
 

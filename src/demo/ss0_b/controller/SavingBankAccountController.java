@@ -5,7 +5,7 @@ import demo.ss0_b.service.impl.SavingBankAccountService;
 
 import java.util.Scanner;
 
-public class SavingBankAccountController {
+public class  SavingBankAccountController {
 
 
     public void menuSavingBankAccount() {

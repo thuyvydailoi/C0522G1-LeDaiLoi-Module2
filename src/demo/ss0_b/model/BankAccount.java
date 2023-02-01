@@ -9,7 +9,7 @@ public abstract class BankAccount {
     public BankAccount() {
     }
 
-    public BankAccount(int id, String name, String code, String dateCreated) {
+    public BankAccount(int id, String code, String name, String dateCreated) {
         this.id = id;
         this.name = name;
         this.code = code;
@@ -52,11 +52,9 @@ public abstract class BankAccount {
 
     @Override
     public String toString() {
-        return "BankAccount{" +
-                "id=" + id +
-                ", code=" + code +
-                ", name='" + name + '\'' +
-                ", data='" + dateCreated + '\'' +
-                '}';
+        return "id=" + id +
+                ", code " + code +
+                ", name " + name +
+                ", date " + dateCreated;
     }
 }
